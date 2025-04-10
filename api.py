@@ -1,63 +1,3 @@
-# import pandas as pd
-# import numpy as np
-# from sklearn.neighbors import NearestNeighbors
-# from sklearn.model_selection import train_test_split
-
-# # Load your dataset
-# df = pd.read_csv("C:\\Users\\ABDUR RAHMAN\\OneDrive\\Desktop\\Buddy\\Avinya25\\recipe\\back\\cleaned_file.csv")
-
-# # Use available columns
-# features = ["protein", "fat", "calories", "sodium"]
-
-# # Prepare the feature matrix
-# X = df[features]
-
-# # Initialize Nearest Neighbors model
-# model = NearestNeighbors(n_neighbors=1)
-
-# # Fit the model on the full dataset
-# model.fit(X)
-
-# # --- PREDICTION PART FOR A NEW INPUT ---
-# new_input = [[25, 8, 400, 600]]  # Example: protein=25, fat=8, calories=400, sodium=600
-# distances, indices = model.kneighbors(new_input)
-# closest_index = indices[0][0]
-# matched_recipe = df.iloc[closest_index]
-
-# print("\n📌 Closest Recipe Match:")
-# print(matched_recipe)
-# print("🔎 Distance to closest recipe:", distances[0][0])
-
-# # --- ACCURACY TEST ON SPLIT DATASET ---
-# # Split dataset into train and test
-# train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
-
-# # Prepare feature matrices
-# X_train = train_df[features]
-# X_test = test_df[features]
-
-# # Fit model on training data
-# model.fit(X_train)
-
-# # Find distances from test points to nearest in training set
-# test_distances, test_indices = model.kneighbors(X_test)
-
-# # Calculate average distance (proxy for model quality)
-# average_distance = np.mean(test_distances)
-# print("\n📊 Average distance on test set (lower = better):", average_distance)
-
-# # Calculate pseudo "accuracy" based on a distance threshold
-# threshold = 50  # Customize based on your dataset range
-# accurate_count = sum(d[0] < threshold for d in test_distances)
-# accuracy = accurate_count / len(test_distances)
-
-# print(f"✅ Prediction accuracy (within distance {threshold}): {accuracy:.2%}")
-
-
-
-
-
-
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
@@ -75,7 +15,7 @@ UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Load dataset and train model
-df = pd.read_csv("C:\\Users\\ABDUR RAHMAN\\OneDrive\\Desktop\\Buddy\\Avinya25\\recipe\\back\\cleaned_file.csv")  # Make sure this CSV is in the same folder
+df = pd.read_csv("cleaned_file.csv")  # Make sure this CSV is in the same folder
 features = ["protein", "fat", "calories", "sodium"]
 X = df[features]
 model = NearestNeighbors(n_neighbors=1)

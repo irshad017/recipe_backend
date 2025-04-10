@@ -1,0 +1,7 @@
+flask
+flask-cors
+speechrecognition
+pydub
+scikit-learn
+pandas
+numpy
