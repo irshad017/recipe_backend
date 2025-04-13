@@ -15,7 +15,8 @@ UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Load dataset and train model
-df = pd.read_csv("cleaned_file.csv")  # Make sure this CSV is in the same folder
+# df = pd.read_csv("cleaned_file.csv"/  # Make sure this CSV is in the same folder
+df = pd.read_csv("merged_recipes.csv")  # Make sure this CSV is in the same folder
 features = ["protein", "fat", "calories", "sodium"]
 X = df[features]
 model = NearestNeighbors(n_neighbors=1)
