@@ -24,7 +24,7 @@ model.fit(X)
 
 @app.route('/')
 def home():
-    return "MODEL Suggestion & Speech to Text & Recipe Recommendation API is running!"
+    return "MODEL Suggestion & Speech to Text & Recipe Recommendation API is running! merged_recipe.csv"
 
 @app.route('/upload-audio', methods=['POST'])
 def upload_audio():
